@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // })->middleware(['auth', 'verified']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::view('/profile/edit', 'auth.update-profile')->middleware('auth')->name('user.profile');
 Route::view('/profile/password', 'auth.update-password')->middleware('auth')->name('user.update-password');
